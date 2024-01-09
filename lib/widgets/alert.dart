@@ -6,7 +6,7 @@ void exibirDialogo(BuildContext context) {
       builder: (BuildContext context) {
         return AlertDialog(
           content:const Text('Algumas combinações não são possiveis de serem feitas.'),
-          actions: <Widget>[
+          actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); 
