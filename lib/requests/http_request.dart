@@ -33,13 +33,21 @@ class HttpResquest extends ChangeNotifier {
 double reduceNumber(double numero) {
   NumberFormat formato = NumberFormat.decimalPattern(); 
   String numeroFormatado = formato.format(numero);
-  return double.parse(numeroFormatado);
+  if(selectedCoin == "BTC - Bitcoin" || selectedCoin2 == "BTC - Bitcoin"){
+    return numero;
+  }else{
+    return double.parse(numeroFormatado);
+  }
 }
 
 Coins? coin;
 double valor = 0;
 
 List<String> validCoins = ['USD - Dólar Americano', 'BRL - Real Brasileiro', 'EUR - Euro', 'GBP - Libra Esterlina', 'BTC - Bitcoin',
+'JPY - Iene Japonês', 'CHF - Franco Suiço', 'CNY - Yuan Chinês', 'ARS - Peso Argentino'
+]; 
+
+List<String> validCoins2 = ['USD - Dólar Americano', 'BRL - Real Brasileiro', 'EUR - Euro', 'GBP - Libra Esterlina', 'BTC - Bitcoin',
 'JPY - Iene Japonês', 'CHF - Franco Suiço', 'CNY - Yuan Chinês', 'ARS - Peso Argentino'
 ]; 
 

@@ -1,5 +1,6 @@
 import 'package:cambio_app/requests/http_request.dart';
 import 'package:flutter/material.dart';
+import 'package:cambio_app/widgets/alert.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +17,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Conversor de Moeda"),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.question_mark_outlined),
+              onPressed: () {
+                exibirDialogo(context);
+              },
+            ),
+          ],
         ),
         body: Center(
             child: ListenableBuilder(
@@ -69,30 +78,32 @@ class _HomePageState extends State<HomePage> {
                         height: 50,
                         child: DropdownButton<String>(
                           value: selectedCoin2,
-                          onChanged: (String? newValue) {
+                          onChanged: (String? newValue2) {
                             setState(() {
-                              selectedCoin = newValue!;
+                              selectedCoin2 = newValue2!;
                             });
                           },
-                          items: validCoins
-                              .map<DropdownMenuItem<String>>((String coin) {
+                          items: validCoins2
+                              .map<DropdownMenuItem<String>>((String coin2) {
                             return DropdownMenuItem<String>(
-                              value: coin,
-                              child: Text(coin),
+                              value: coin2,
+                              child: Text(coin2),
                             );
                           }).toList(),
                         ),
                       ),
+                      const Padding(padding: EdgeInsets.all(10)),
                       ElevatedButton(
                           onPressed: () {
                             _resquest.requestCoins(cashValue.text);
                           },
                           child: const Text('Converter')),
+                      const Padding(padding: EdgeInsets.all(10)),
                       if (coin != null) ...[
                         SizedBox(
                           width: 240,
                           child: Text(
-                              "${cashValue.text} $selectedCoin = ${reduceNumber(valor)} $selectedCoin2"),
+                              "${cashValue.text} $selectedCoin = ${valor} $selectedCoin2"),
                         )
                       ]
                     ],

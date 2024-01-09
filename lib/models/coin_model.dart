@@ -12,9 +12,9 @@ class Coins{
   factory Coins.fromJson(Map<String, dynamic> json){
 
     return Coins(
-      coinOne: json['code']!,
-      coinTwo: json['codein']!,
-      price: json['ask']!,
+      coinOne: json['code'],
+      coinTwo: json['codein'],
+      price: json['ask'],
     );
   }
 }
