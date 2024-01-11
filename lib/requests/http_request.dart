@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:cambio_app/models/coin_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 
 class HttpResquest extends ChangeNotifier {
   Future<void> requestCoins(String value) async{
@@ -27,16 +26,6 @@ class HttpResquest extends ChangeNotifier {
     return s.substring(0, 3);
   } else {
     return s;
-  }
-}
-
-double reduceNumber(double numero) {
-  NumberFormat formato = NumberFormat.decimalPattern(); 
-  String numeroFormatado = formato.format(numero);
-  if(selectedCoin == "BTC - Bitcoin" || selectedCoin2 == "BTC - Bitcoin"){
-    return numero;
-  }else{
-    return double.parse(numeroFormatado);
   }
 }
 
