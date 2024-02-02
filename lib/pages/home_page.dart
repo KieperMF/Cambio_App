@@ -16,18 +16,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor:Colors.blueGrey,
+          backgroundColor: Colors.blueGrey,
           title: const Text("Conversor de Moeda"),
           actions: <Widget>[
             IconButton(
-              icon:const Icon(Icons.question_mark_outlined),
+              icon: const Icon(Icons.question_mark_outlined),
               onPressed: () {
-                exibirDialogo(context);
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const CustomAlert(title: 'Algumas combinações não podem ser feitas');
+                  },
+                );
               },
             ),
           ],
         ),
-        backgroundColor:Colors.blueGrey[600],
+        backgroundColor: Colors.blueGrey[600],
         body: Center(
             child: ListenableBuilder(
                 listenable: _resquest,
@@ -38,8 +43,9 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(16),
-                        child: const Image(image: AssetImage('images/logo_convert.jpg'), 
-                        height: 200,
+                        child: const Image(
+                          image: AssetImage('images/logo_convert.jpg'),
+                          height: 200,
                         ),
                       ),
                       const Padding(padding: EdgeInsets.all(15)),
@@ -61,7 +67,9 @@ class _HomePageState extends State<HomePage> {
                                 return DropdownMenuItem<String>(
                                   value: coin,
                                   child: Text(coin,
-                                      style: const TextStyle(fontSize: 14,)),
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      )),
                                 );
                               }).toList(),
                             ),
@@ -95,8 +103,9 @@ class _HomePageState extends State<HomePage> {
                                   _resquest.selectedCoin2 = newValue2!;
                                 });
                               },
-                              items: _resquest.validCoins2.map<DropdownMenuItem<String>>(
-                                  (String coin2) {
+                              items: _resquest.validCoins2
+                                  .map<DropdownMenuItem<String>>(
+                                      (String coin2) {
                                 return DropdownMenuItem<String>(
                                   value: coin2,
                                   child: Text(coin2,
@@ -118,11 +127,15 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const Padding(padding: EdgeInsets.all(15)),
                       ElevatedButton(
-                          onPressed: () {
-                            _resquest.requestCoins(cashValue.text);
-                          },
-                          style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.cyan[600])),
-                          child: const Text('Converter', style: TextStyle(color: Colors.black)), ),
+                        onPressed: () {
+                          _resquest.requestCoins(cashValue.text);
+                        },
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(Colors.cyan[600])),
+                        child: const Text('Converter',
+                            style: TextStyle(color: Colors.black)),
+                      ),
                     ],
                   );
                 })));
