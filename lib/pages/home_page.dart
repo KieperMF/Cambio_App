@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor:Colors.blueGrey,
           title: const Text("Conversor de Moeda"),
           actions: <Widget>[
             IconButton(
@@ -26,6 +27,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+        backgroundColor:Colors.blueGrey[600],
         body: Center(
             child: ListenableBuilder(
                 listenable: _resquest,
@@ -34,6 +36,13 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: const Image(image: AssetImage('images/logo_convert.jpg'), 
+                        height: 200,
+                        ),
+                      ),
+                      const Padding(padding: EdgeInsets.all(15)),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -52,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                                 return DropdownMenuItem<String>(
                                   value: coin,
                                   child: Text(coin,
-                                      style: const TextStyle(fontSize: 14)),
+                                      style: const TextStyle(fontSize: 14,)),
                                 );
                               }).toList(),
                             ),
@@ -112,7 +121,8 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () {
                             _resquest.requestCoins(cashValue.text);
                           },
-                          child: const Text('Converter')),
+                          style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.cyan[600])),
+                          child: const Text('Converter', style: TextStyle(color: Colors.black)), ),
                     ],
                   );
                 })));
