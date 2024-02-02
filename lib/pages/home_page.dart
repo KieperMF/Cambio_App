@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController cashValue = TextEditingController();
-  HttpResquest _resquest = HttpResquest();
+  final _resquest = HttpResquest();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,13 +50,13 @@ class _HomePageState extends State<HomePage> {
                             width: 160,
                             height: 50,
                             child: DropdownButton<String>(
-                              value: selectedCoin,
+                              value: _resquest.selectedCoin,
                               onChanged: (String? newValue) {
                                 setState(() {
-                                  selectedCoin = newValue!;
+                                  _resquest.selectedCoin = newValue!;
                                 });
                               },
-                              items: validCoins
+                              items: _resquest.validCoins
                                   .map<DropdownMenuItem<String>>((String coin) {
                                 return DropdownMenuItem<String>(
                                   value: coin,
@@ -89,13 +89,13 @@ class _HomePageState extends State<HomePage> {
                             width: 160,
                             height: 50,
                             child: DropdownButton<String>(
-                              value: selectedCoin2,
+                              value: _resquest.selectedCoin2,
                               onChanged: (String? newValue2) {
                                 setState(() {
-                                  selectedCoin2 = newValue2!;
+                                  _resquest.selectedCoin2 = newValue2!;
                                 });
                               },
-                              items: validCoins2.map<DropdownMenuItem<String>>(
+                              items: _resquest.validCoins2.map<DropdownMenuItem<String>>(
                                   (String coin2) {
                                 return DropdownMenuItem<String>(
                                   value: coin2,

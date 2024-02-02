@@ -6,6 +6,18 @@ import 'package:http/http.dart' as http;
 
 class HttpResquest extends ChangeNotifier {
   TextEditingController valueConvert = TextEditingController();
+  Coins? coin;
+  double valor = 0;
+  List<String> validCoins = ['USD - Dólar', 'BRL - Real', 'EUR - Euro', 'GBP - Libra', 'BTC - Bitcoin',
+'JPY - Iene ','CHF - Franco', 'CNY - Yuan', 'ARS - Peso', 
+]; 
+
+List<String> validCoins2 = ['USD - Dólar', 'BRL - Real', 'EUR - Euro', 'GBP - Libra ', 'BTC - Bitcoin',
+'JPY - Iene', 'CHF - Franco', 'CNY - Yuan', 'ARS - Peso'
+]; 
+
+String selectedCoin = 'USD - Dólar';
+String selectedCoin2 = 'BRL - Real';
   Future<void> requestCoins(String value) async{
     try{
       Uri uri = Uri.parse("https://economia.awesomeapi.com.br/last/${reduzirString(selectedCoin)}-${reduzirString(selectedCoin2)}");
@@ -19,7 +31,7 @@ class HttpResquest extends ChangeNotifier {
       }
       
     }catch(e){
-      print("erro $e");
+      
     }
   }
 }
@@ -32,16 +44,5 @@ class HttpResquest extends ChangeNotifier {
 }
 
 
-Coins? coin;
-double valor = 0;
 
-List<String> validCoins = ['USD - Dólar', 'BRL - Real', 'EUR - Euro', 'GBP - Libra', 'BTC - Bitcoin',
-'JPY - Iene ','CHF - Franco', 'CNY - Yuan', 'ARS - Peso', 
-]; 
 
-List<String> validCoins2 = ['USD - Dólar', 'BRL - Real', 'EUR - Euro', 'GBP - Libra ', 'BTC - Bitcoin',
-'JPY - Iene', 'CHF - Franco', 'CNY - Yuan', 'ARS - Peso'
-]; 
-
-String selectedCoin = 'USD - Dólar';
-String selectedCoin2 = 'BRL - Real';
