@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:cambio_app/models/coin_model.dart';
-import 'package:cambio_app/widgets/alert.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -49,13 +48,7 @@ class HttpResquest extends ChangeNotifier {
         notifyListeners();
       }
     } catch (e) {
-      (BuildContext context) {
-        showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return const CustomAlert(title: 'Erro ao pegar informações');
-            });
-      };
+      print('erro');
     }
   }
 }
