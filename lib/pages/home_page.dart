@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                             backgroundColor:
                                 MaterialStatePropertyAll(Colors.cyan[600])),
                         child: const Text('Converter',
-                            style: TextStyle(color: Colors.black)),
+                            style: TextStyle(color: Colors.white)),
                       ),
                     ],
                   );
