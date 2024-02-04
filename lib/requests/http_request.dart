@@ -34,6 +34,7 @@ class HttpResquest extends ChangeNotifier {
 
   String selectedCoin = 'USD - Dólar';
   String selectedCoin2 = 'BRL - Real';
+  
   Future<void> requestCoins(String value) async {
     try {
       Uri uri = Uri.parse(
